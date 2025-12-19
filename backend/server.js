@@ -3,22 +3,26 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 
-// 🔹 Force dotenv to load .env from backend root
-dotenv.config({ path: "./.env" });
+// Load env variables
+dotenv.config();
 
-// 🔹 Debug line (temporary)
-console.log("MONGO_URI =", process.env.MONGO_URI);
-
-// 🔹 Connect to MongoDB
+// Connect to MongoDB
 connectDB();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Test route
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("Backend API is running 🚀");
+});
+
+// Products route placeholder (Day 5+)
+app.get("/api/products", (req, res) => {
+  res.json([]);
 });
 
 const PORT = process.env.PORT || 5000;
